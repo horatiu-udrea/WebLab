@@ -1,0 +1,67 @@
+h3 {
+    color: lightpink;
+}
+
+.tableC th {
+    color: #46ff32;
+}
+
+.tableC td {
+    color: #ff6052;
+}
+
+.tableC tr {
+    color: #ff2718;
+}
+
+.tableC, th, td {
+    border: 3px dotted #61ff06;
+    border-collapse: collapse;
+    background-color: #6045ff;
+}
+
+.roundedImage {
+    border-radius: 10px;
+}
+
+.specialBackground {
+    background: rgb(2,0,36);
+    background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(138,3,222,1) 50%, rgba(76,0,255,1) 100%);
+    border-radius:30px;
+    box-shadow: 10px 10px gray;
+}
+
+a:hover, a:visited, a:active, a:link
+{
+    color: lightblue;
+    text-decoration: none;
+    font-size: 30px;
+}
+
+ul.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.navbar li {
+    float: left;
+}
+
+ul.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
