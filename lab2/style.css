@@ -1,27 +1,54 @@
 .sidebar {
-    position: absolute;
+    position: fixed;
     bottom: 0;
-    background-color: lightgreen;
+    left:0;
+    right:0;
+    background-color: #424874;
+    height: 50px;
 }
 
 .sidebar .element {
-    display: inline;
+    display: inline-block;
     position: relative;
+    height: 100%;
+    width: 100px;
 }
 
 .sidebar .command {
     display: inline-block;
-    position: relative;
+    background-color: #a6b1e1;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 20px 20px;
 }
 
 .sidebar .submenu {
     display: none;
     position: absolute;
-    right: 0;
-    bottom: 20px;
+    left: 0;
+    bottom: 50px;
     z-index: 100;
+    text-align: center;
+    vertical-align: middle;
+    width: 120px;
+
 }
 
-.sidebar li:hover .submenu {
+.sidebar .submenu .subitem {
+    background-color: #a6b1e1;
     display: block;
+    padding: 7px;
+}
+
+.sidebar .command:hover {
+    background-color: #dcd6f7;
+}
+
+.sidebar .element:hover .submenu {
+    display: block;
+}
+
+.sidebar .submenu .subitem:hover {
+    background-color: #dcd6f7;
 }
