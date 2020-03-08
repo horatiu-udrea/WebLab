@@ -1,0 +1,27 @@
+.sidebar {
+    position: absolute;
+    bottom: 0;
+    background-color: lightgreen;
+}
+
+.sidebar .element {
+    display: inline;
+    position: relative;
+}
+
+.sidebar .command {
+    display: inline-block;
+    position: relative;
+}
+
+.sidebar .submenu {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    z-index: 100;
+}
+
+.sidebar li:hover .submenu {
+    display: block;
+}
