@@ -1,0 +1,53 @@
+.schedule {
+    font-size: 30px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.schedule, .schedule th, .schedule td {
+    border: 3px solid purple;
+    padding: 20px 80px;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+}
+
+.artist {
+    position: relative;
+}
+
+.artist img {
+    border-radius: 100%;
+    width: 150px;
+    border: 0 solid white;
+    transition: border 0.2s, width 0.2s;
+}
+
+.artist .data {
+    position: absolute;
+    left: 280px;
+    top: 0;
+    background-color: lightcyan;
+    width: 800px;
+    font-size: 20px;
+    z-index: 100;
+    border-radius: 30px;
+    padding: 20px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.2s;
+    text-align: justify;
+}
+
+.artist img:hover + .data {
+    visibility: visible;
+    opacity: 1;
+}
+
+.artist img:hover {
+    border-color: cyan;
+    border-width: 5px;
+    width: 140px;
+}
