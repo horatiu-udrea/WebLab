@@ -1,0 +1,159 @@
+body {
+    margin: 0;
+    background: #d1e8f8 url(http://www.ucla.edu/img/background.jpg) repeat;
+}
+
+header > .topbar {
+    background: #93d3eb url(http://www.ucla.edu/img/audience-nav-bg.jpg) repeat-y center;
+    padding: 0 300px;
+}
+
+header > .topbar > .weather {
+    display: inline-block;
+    margin: 8px 100px;
+}
+
+header > .topbar > .weather > img {
+    vertical-align: middle;
+}
+
+header > .topbar > .links {
+    display: inline-block;
+    position: relative;
+}
+
+header > .topbar > .links > a {
+    text-decoration: none;
+}
+
+header > .topbar > .links > .big-buttons {
+    position: absolute;
+    right: -250px;
+    top: -8px;
+}
+
+header > .topbar > .links > .big-buttons > .yellow-button {
+    display: inline-block;
+    background: url(http://www.ucla.edu/img/callout-nav-bkgd.jpg) repeat-x left top #FFe800;
+    border-top: 4px solid #ffb300;
+    padding: 15px;
+}
+
+header > .band {
+    background: #2c5e91 url(http://www.ucla.edu/img/header-bg.jpg) repeat-x top;
+    padding: 50px 0;
+}
+
+header .secondbar {
+    width: 1000px;
+    margin: auto;
+}
+
+header .secondbar > .title {
+    font-size: 75px;
+    margin: 0;
+    color: white;
+}
+
+header .secondbar > .title {
+    font-size: 75px;
+    margin: 0;
+    color: white;
+}
+
+header .secondbar > nav {
+    width: 1000px;
+    margin: auto;
+    color: white;
+}
+
+header .secondbar > nav > a {
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+main .centerimage {
+    width: 1000px;
+    margin: auto;
+    position: relative;
+}
+
+main .centerimage img {
+    width: 100%
+}
+
+main .centerimage .floatingcard {
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+    background: #ffe800;
+    padding: 10px;
+    width: 400px;
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+main .centerimage .floatingcard h1 {
+    font-size: 15px
+}
+
+main .centerimage .floatingcard h2 {
+    font-size: 12px
+}
+
+main section {
+    background: white;
+    width: 1000px;
+    margin: auto;
+}
+
+main section .title {
+    margin: 0;
+    padding: 20px;
+    color: #347bad;
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
+
+main section article {
+    width: 300px;
+    padding: 10px;
+    display: inline-block;
+}
+
+main section article img{
+    display: block;
+}
+main section article a{
+    width: 216px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    color: #347bad;
+}
+
+main section article p {
+    width: 216px;
+}
+
+main section .bottomlinks {
+    width: 300px;
+    padding: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+main section .bottomlinks a{
+    padding: 10px;
+    display: inline-block;
+    text-decoration: none;
+}
+main section .bottomlinks .title {
+    padding: 0;
+    font-family: proxima-nova, sans-serif;
+    font-style: normal;
+    font-weight: 100;
+}
