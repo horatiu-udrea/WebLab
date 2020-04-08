@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Form</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+                crossorigin="anonymous"></script>
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet">
+    </head>
+    <body>
+
+        <form class="mainform">
+            <h1>Form</h1>
+            <label for="firstname">
+                First name:
+            </label>
+            <input type="text" id="firstname"/>
+            <br/>
+            <label for="lastname">
+                Last name:
+            </label>
+            <input type="text" id="lastname"/>
+            <br/>
+            <label for="age">
+                Age:
+            </label>
+            <input type="text" id="age"/>
+            <br/>
+            <label for="occupation">
+                Occupation:
+            </label>
+            <input type="text" id="occupation"/>
+            <br/>
+            <label for="hobbies">
+                Hobbies:
+            </label>
+            <input type="text" id="hobbies" disabled/>
+            <div class="center">
+                <button id="changeHobbiesButton" type="button" onclick="changeHobbies()">Change Hobbies</button>
+            </div>
+        </form>
+
+        <div class="gray-background"></div>
+
+        <form class="modal mainform">
+            <div class="exit-icon"><span class="material-icons" onclick="exitModal()">clear</span></div>
+            <h1>Choose hobbies</h1>
+            <label for="hobby1">
+                Hobby 1:
+            </label>
+            <input type="text" id="hobby1"/>
+            <br/>
+            <label for="hobby2">
+                Hobby 2:
+            </label>
+            <input type="text" id="hobby2"/>
+            <br/>
+            <label for="hobby3">
+                Hobby 3:
+            </label>
+            <input type="text" id="hobby3"/>
+            <br/>
+            <label for="hobby4">
+                Hobby 4:
+            </label>
+            <input type="text" id="hobby4"/>
+            <br/>
+            <div class="center">
+                <input id="change" type="button" value="Change" onclick="submitHobbies()"/>
+            </div>
+        </form>
+        <script src="script.js"></script>
+    </body>
+</html>
