@@ -1,0 +1,21 @@
+### Root
+GET http://localhost/lab7/api.php
+
+### Read
+GET http://localhost/lab7/api.php?action=getAllRecipes
+
+### Filter
+GET http://localhost/lab7/api.php?action=filterRecipes&type=Easy
+
+### Read one
+GET http://localhost/lab7/api.php?action=getRecipe&id=1
+
+### Delete
+GET http://localhost/lab7/api.php?action=deleteRecipe&id=1
+
+### Update
+GET http://localhost/lab7/api.php?action=updateRecipe&id=1&name=Pizza&type=Easy&author=Davie504&description=Cook dough.... profit.
+
+### Add
+GET http://localhost/lab7/api.php?action=addRecipe&id=1&name=Pizza&type=Easy&author=Davie504&description=Cook dough.... profit.
+

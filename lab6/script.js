@@ -22,7 +22,7 @@ function submitHobbies()
         let value = $('#hobby' + number).val();
         if (value)
         {
-            hobbyValue += value + ';';
+            hobbyValue += value + ';'
         }
         hobbies[index] = value;
     }
