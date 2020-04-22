@@ -1,1 +1,1 @@
-GET http://localhost/battleships/api
+POST http://localhost/battleships/reset

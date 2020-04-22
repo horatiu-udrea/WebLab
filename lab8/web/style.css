@@ -1,0 +1,27 @@
+.board {
+    border-collapse: collapse;
+    margin: auto;
+}
+body {
+    background-image: url("https://wallpaperaccess.com/full/1486722.jpg");
+}
+.board, .board td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+.board td {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+}
+
+.container {
+    width: 700px;
+    margin: auto;
+    background: aliceblue;
+    border: 5px solid deepskyblue;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+}
