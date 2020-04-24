@@ -3,6 +3,8 @@ let attackboard = []
 let letters = "ABCDEFGHIJ"
 let boat1
 let boat2
+const URL = "http://localhost/battleships"
+let timer = null
 
 function createBoards(matrix, tableId)
 {
@@ -35,21 +37,170 @@ function createBoards(matrix, tableId)
     }
 }
 
+/*function fetchBoats()
+{
+    boat1 = [boats.boat1x, boats.boat1y]
+    boat2 = [boats.boat2x, boats.boat2y]
+    drawShip1(boat1[0], boat1[1], 'navy')
+    drawShip2(boat2[0], boat2[1], 'navy')
+}*/
+
+function color(matrix, x, y, color)
+{
+    matrix[y][x].css('background-color', color);
+}
+
+function drawBattlefield()
+{
+    console.log("Drawing battlefield")
+    $.getJSON(URL + "/battlefield",
+        (data) =>
+        {
+            for (let square of data)
+            {
+                if (square.hit2)
+                {
+                    let matrix
+                    if (player === 1) matrix = myboard
+                    else if (player === 2) matrix = attackboard
+                    let drawColor = 'grey';
+                    if (square.ship1) drawColor = 'red'
+                    color(matrix, square.x, square.y, drawColor);
+                }
+                if (square.hit1)
+                {
+                    let matrix
+                    if (player === 2) matrix = myboard
+                    else if (player === 1) matrix = attackboard
+                    let drawColor = 'grey';
+                    if (square.ship2) drawColor = 'red'
+                    color(matrix, square.x, square.y, drawColor);
+                }
+                if (!square.hit2 && square.ship1 && player === 1 || !square.hit1 && square.ship2 && player === 2)
+                {
+                    color(myboard, square.x, square.y, 'navy');
+                }
+            }
+            let playerWin = checkWin(data);
+            if (playerWin !== 0)
+            {
+                announce(`Player ${playerWin} won!`)
+            }
+        }
+    )
+}
+
 function phase1()
 {
+    console.log("Phase 1")
     phase = 1
-    announce("Make your move!")
+    announce(`Player ${player} - Make your move!`)
+    drawBattlefield()
+}
+
+function checkWin(data)
+{
+    if (checkWinPlayer(1, data)) return 1
+    if (checkWinPlayer(2, data)) return 2
+    return 0
+}
+
+function gameStarted(player, data)
+{
+    if (player === 1)
+    {
+        for (let square of data)
+        {
+            if (square.ship1)
+            {
+                return true
+            }
+        }
+        return false;
+    }
+
+    for (let square of data)
+    {
+        if (square.ship2)
+        {
+            return true
+        }
+    }
+    return false;
+}
+
+function checkWinPlayer(player, data)
+{
+    if (!gameStarted(player, data)) return false
+    console.log("here")
+    if (player === 1)
+    {
+        for (let square of data)
+        {
+            if (square.ship2 && !square.hit1)
+            {
+                return false
+            }
+        }
+        return true;
+    }
+
+    for (let square of data)
+    {
+        if (square.ship1 && !square.hit2)
+        {
+            return false
+        }
+    }
+    return true;
 }
 
 function phase0()
 {
     phase = 0
-    announce("Wait for the other player to make his move!")
-//    TODO create timer and make post request
+    announce(`Player ${player} - Wait for the other player!`)
+    if (timer != null)
+    {
+        clearInterval(timer)
+    }
+    timer = setInterval(() =>
+    {
+        $.get(URL + "/turn", {player: player}, (phase) =>
+        {
+            if (phase == 1)
+            {
+                console.log("Your turn came")
+                clearInterval(timer)
+                timer = null
+                phase1()
+            }
+        })
+    }, 1000)
+    drawBattlefield()
 }
+
+function updateShips()
+{
+    console.log("Update ships:" + boat1 + boat2)
+    let data = [player, boat1[0], boat1[1], boat2[0], boat2[1]]
+    $.ajax(URL + "/ships", {type: "POST", data: data.join(";")})
+}
+
+// function player2HasShips(data)
+// {
+//     for (let square of data)
+//     {
+//         if (square.ship2)
+//         {
+//             return true
+//         }
+//     }
+//     return true
+// }
 
 function squareClicked(tableId, x, y)
 {
+    console.log("Square clicked: "+ x + " " +y)
     if (placeBoard1Condition(tableId, x))
     {
         phase = -1
@@ -59,9 +210,14 @@ function squareClicked(tableId, x, y)
     if (placeBoard2Condition(tableId, y))
     {
         boat2 = [x, y]
+        updateShips()
         if (player === 1) phase1()
         else phase0()
-        return
+    }
+    if (phase === 1 && tableId === "#attackboard")
+    {
+        let data = [player, x, y]
+        $.post(URL + "/hit", data.join(";"), () => phase0())
     }
 }
 
@@ -123,4 +279,15 @@ function placeBoard2Condition(tableId, y)
 function announce(message)
 {
     $('#announcer').html(message)
+}
+
+function resetGame()
+{
+    $.post(URL + "/reset")
+    window.location.reload()
+    if (timer != null)
+    {
+        clearInterval(timer)
+        timer = null
+    }
 }

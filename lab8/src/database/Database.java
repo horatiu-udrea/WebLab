@@ -17,8 +17,9 @@ public class Database
 
     protected static final String CONNECTION_STRING = "jdbc:postgresql://localhost:5432/Battleships";
     public final Connection connection;
+    private static Database database;
 
-    public Database() throws SQLException
+    private Database() throws SQLException
     {
         try
         {
@@ -36,6 +37,15 @@ public class Database
 
         Driver driver = DriverManager.getDriver(CONNECTION_STRING);
         connection = driver.connect(CONNECTION_STRING, connectionProperties);
+    }
+
+    public static Database get() throws SQLException
+    {
+        if (database == null)
+        {
+            database = new Database();
+        }
+        return database;
     }
 
     public List<Square> getSquares() throws SQLException
@@ -59,6 +69,14 @@ public class Database
         return squares;
     }
 
+    public void setSquareShip(int player, int x, int y) throws SQLException
+    {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE squares SET ship" + player + "=true WHERE x=? AND y= ?");
+        preparedStatement.setInt(1, x);
+        preparedStatement.setInt(2, y);
+        preparedStatement.execute();
+    }
+
     public String getPlayer1SessionId() throws SQLException
     {
         PreparedStatement preparedStatement = connection.prepareStatement(
@@ -74,6 +92,32 @@ public class Database
                 "UPDATE players SET session=? WHERE player=1");
         preparedStatement.setString(1, sessionId);
         preparedStatement.execute();
+    }
+
+    public void setPlayerTurn(int player, boolean turn) throws SQLException
+    {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE players SET turn=? WHERE player=?");
+        preparedStatement.setBoolean(1, turn);
+        preparedStatement.setInt(2, player);
+        preparedStatement.execute();
+    }
+
+    public void setPlayerShips(int player, String ships) throws SQLException
+    {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE players SET ships=? WHERE player=?");
+        preparedStatement.setString(1, ships);
+        preparedStatement.setInt(2, player);
+        preparedStatement.execute();
+    }
+
+    public String getPlayerShips(int player) throws SQLException
+    {
+        PreparedStatement preparedStatement = connection.prepareStatement(
+                "SELECT ships FROM players WHERE player=?");
+        preparedStatement.setInt(1, player);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        return resultSet.getString("ships");
     }
 
     public void setPlayer2SessionId(String sessionId) throws SQLException
@@ -97,6 +141,10 @@ public class Database
     {
         setPlayer1SessionId("");
         setPlayer2SessionId("");
+        setPlayerShips(1, "");
+        setPlayerShips(2, "");
+        setPlayerTurn(1, false);
+        setPlayerTurn(2, false);
 
         PreparedStatement deleteStatement = connection.prepareStatement("DELETE FROM squares");
         deleteStatement.execute();
@@ -126,5 +174,13 @@ public class Database
         ResultSet resultSet = preparedStatement.executeQuery();
         resultSet.next();
         return resultSet.getBoolean("turn") ? 1 : 0;
+    }
+
+    public void hitSquare(int player, int x, int y) throws SQLException
+    {
+        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE squares SET hit" + player + "=true WHERE x=? AND y= ?");
+        preparedStatement.setInt(1, x);
+        preparedStatement.setInt(2, y);
+        preparedStatement.execute();
     }
 }

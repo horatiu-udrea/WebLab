@@ -1,10 +1,10 @@
 package api;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,16 +12,21 @@ import javax.servlet.http.HttpServletResponse;
 
 import database.Database;
 
-@WebServlet("/reset")
-public class ResetGame extends HttpServlet
+@WebServlet("/turn")
+public class Turn extends HttpServlet
 {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException
     {
+        int player = Integer.parseInt(req.getParameter("player"));
         try
         {
-            Database.get().resetGame();
+            Database database = Database.get();
+            try(PrintWriter writer = resp.getWriter())
+            {
+                writer.println(database.getPhase(player));
+            }
         }
         catch (SQLException e)
         {

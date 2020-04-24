@@ -20,4 +20,17 @@ public class Square
     boolean ship2;
     boolean hit1;
     boolean hit2;
+
+    @Override
+    public String toString()
+    {
+        return "{" +
+                "\"x\":" + x +
+                ", \"y\":" + y +
+                ", \"ship1\":" + ship1 +
+                ", \"ship2\":" + ship2 +
+                ", \"hit1\":" + hit1 +
+                ", \"hit2\":" + hit2 +
+                '}';
+    }
 }
