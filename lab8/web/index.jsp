@@ -69,7 +69,7 @@
         <p class="label">Attack board</p>
         <table class="board" id="attackboard"></table>
         <br />
-        <button onclick="resetGame()">Reset game</button>
+<%--        <button onclick="resetGame()">Reset game</button>--%>
     </div>
 
     <script>

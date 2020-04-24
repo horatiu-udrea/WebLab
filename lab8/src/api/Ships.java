@@ -60,7 +60,7 @@ public class Ships extends HttpServlet
             database.setPlayerShips(
                     player,
                     String.format(
-                            "{boat1x:%d, boat1y:%d, boat2x:%d, boat2y:%d}",
+                            "{\"ship1\":{\"x\":%d, \"y\":%d}, \"ship2\":{\"x\":%d, \"y\":%d}}",
                             x1,
                             y1,
                             x2,

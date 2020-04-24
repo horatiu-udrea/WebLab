@@ -107,7 +107,7 @@ function checkWin(data)
 
 function gameStarted(player, data)
 {
-    if (player === 1)
+    if (player === 2)
     {
         for (let square of data)
         {
@@ -132,7 +132,6 @@ function gameStarted(player, data)
 function checkWinPlayer(player, data)
 {
     if (!gameStarted(player, data)) return false
-    console.log("here")
     if (player === 1)
     {
         for (let square of data)
@@ -185,18 +184,6 @@ function updateShips()
     let data = [player, boat1[0], boat1[1], boat2[0], boat2[1]]
     $.ajax(URL + "/ships", {type: "POST", data: data.join(";")})
 }
-
-// function player2HasShips(data)
-// {
-//     for (let square of data)
-//     {
-//         if (square.ship2)
-//         {
-//             return true
-//         }
-//     }
-//     return true
-// }
 
 function squareClicked(tableId, x, y)
 {
@@ -284,10 +271,16 @@ function announce(message)
 function resetGame()
 {
     $.post(URL + "/reset")
-    window.location.reload()
     if (timer != null)
     {
         clearInterval(timer)
         timer = null
     }
+    window.location.href=URL
+}
+
+function showEnemyShips()
+{
+    $.getJSON(URL + "/ships", {player:player===1?2:1}, (ships) => console.log(ships))
+    return "The ships are 4 squares long. \nShip1 goes from that point to the right and ship2 2 goes to the bottom."
 }
