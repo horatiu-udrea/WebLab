@@ -3,7 +3,7 @@ let attackboard = []
 let letters = "ABCDEFGHIJ"
 let boat1
 let boat2
-const URL = "http://localhost/battleships"
+const URL = "/battleships"
 let timer = null
 
 function createBoards(matrix, tableId)
