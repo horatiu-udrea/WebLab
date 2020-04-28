@@ -179,5 +179,28 @@ namespace lab9.Database
                 Connection.Close();
             }
         }
+
+        public bool AuthenticateUser(UserProfile userProfile)
+        {
+            var query = "SELECT * FROM users WHERE username='" + userProfile.Username + "' AND password='"+userProfile.Password+"'";
+            var command = new MySqlCommand(query, Connection);
+            try
+            {
+                Connection.Open();
+                using (var reader = command.ExecuteReader())
+                {
+                    return reader.Read();
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                Connection.Close();
+            }
+        }
     }
 }

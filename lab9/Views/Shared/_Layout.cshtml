@@ -26,6 +26,7 @@
                 <li>@Html.ActionLink("Add", "Add", "Home")</li>
                 <li>@Html.ActionLink("Delete", "Delete", "Home")</li>
                 <li>@Html.ActionLink("Update", "Update", "Home")</li>
+                <li>@Html.ActionLink(Session["UserName"] == null?"Not logged in":"Logout from " + Session["UserName"].ToString(), "Logout", "Login")</li>
             </ul>
         </div>
     </div>
