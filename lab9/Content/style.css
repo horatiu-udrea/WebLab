@@ -1,0 +1,68 @@
+﻿body {
+    background-image: url("https://www.technocrazed.com/wp-content/uploads/2015/12/Kitchen-wallpaper-40.jpg");
+}
+.custom-container {
+    width:1000px;
+    height: 600px;
+    border-radius: 40px;
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+    border: 5px solid #0B6FA4;
+}
+.menuitem {
+    display: inline-block;
+    margin:10px;
+}
+table.paleBlueRows {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    border: 1px solid lightblue;
+    width: 350px;
+    /*height: 200px;*/
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;
+}
+table.paleBlueRows td, table.paleBlueRows th {
+    border: 1px solid lightblue;
+    padding: 3px 2px;
+}
+table.paleBlueRows tbody td {
+    font-size: 13px;
+}
+
+table.paleBlueRows tr:nth-child(even) {
+    background: #D0E4F5;
+}
+table.paleBlueRows tbody tr:nth-child(odd) {
+    background: white;
+}
+table.paleBlueRows tbody tr:hover {
+    background-color: burlywood;
+    cursor: pointer;
+}
+table.paleBlueRows thead {
+    background: #0B6FA4;
+    /*border-bottom: 5px solid lightblue;*/
+}
+table.paleBlueRows thead th {
+    font-size: 17px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    padding:10px;
+    border-left: 2px solid lightblue;
+}
+table.paleBlueRows thead th:first-child {
+    border-left: none;
+}
+
+#added {
+    color: green;
+}
+
+input {
+    border-radius : 5px;
+    padding:5px;
+}

@@ -1,0 +1,33 @@
+﻿### Read
+GET http://localhost:5000/api/Recipe
+
+### Read one
+GET http://localhost:5000/api/Recipe/1
+
+### Filter
+GET http://localhost:5000/api/FilterRecipe/Easy
+
+### Add
+POST http://localhost:5000/api/Recipe
+
+{
+    "id": 7,
+    "name": "test",
+    "type": "test",
+    "author": "test",
+    "description": "test"
+  }
+
+### Update
+PUT http://localhost:5000/api/Recipe
+
+{
+    "id": 7,
+    "name": "test7",
+    "type": "test7",
+    "author": "test7",
+    "description": "test7"
+  }
+
+### Remove
+DELETE http://localhost:5000/api/Recipe/7
