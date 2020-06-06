@@ -1,0 +1,3 @@
+### Requirement
+
+Solve the following problem using the JSP/Servlet technology. State information (between web requests) is always stored in a database; you may store some state information in cookies/session objects. Write a web application which allows two (human) players to play the game ships ("vapoare" in romanian): each player has 2 ships deployed in a rectangular grid and they each try to sink the oponent's ships by bombing it (guessing the position of the ship on the battle grid). The game can not start unless two playes are connected. If a third player comes in, it will be rejected from the game with an error message.
